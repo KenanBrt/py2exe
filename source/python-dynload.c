@@ -289,11 +289,6 @@ void _Py_Dealloc(PyObject *op)
     (*dealloc)(op);
 }
 
-void _Py_ForgetReference(PyObject *ob)
-{
-  FUNC(void, _Py_ForgetReference, (PyObject *));
-  proc(ob);
-}
 
 char *PyBytes_AsString(PyObject *string)
 {

@@ -30,7 +30,7 @@
  * These portions are Copyright (C) 2013 Thomas Heller.
  */
 
-#define DEBUG_OUTPUT /* enable to print debug output */
+// #define DEBUG_OUTPUT /* enable to print debug output */
 
 #ifndef __GNUC__
 // disable warnings about pointer <-> DWORD conversions

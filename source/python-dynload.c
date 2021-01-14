@@ -289,7 +289,6 @@ void _Py_Dealloc(PyObject *op)
     (*dealloc)(op);
 }
 
-
 char *PyBytes_AsString(PyObject *string)
 {
   FUNC(char *, PyBytes_AsString, (PyObject *));

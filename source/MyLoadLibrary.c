@@ -4,7 +4,7 @@
 #include "MemoryModule.h"
 #include "MyLoadLibrary.h"
 
-#define VERBOSE /* enable to print debug output */
+// #define VERBOSE /* enable to print debug output */
 
 /*
 

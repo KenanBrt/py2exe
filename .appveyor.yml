@@ -55,62 +55,62 @@ init:
   - set PATH=%PATH:C:\Program Files\Meson\;=%
 
 for:
-  -
-    matrix:
-      only:
-        - SDIST: yes
-    install:
-        - python setup.py sdist
-    test_script:
-        - dir dist
+  # -
+  #   matrix:
+  #     only:
+  #       - SDIST: yes
+  #   install:
+  #       - python setup.py sdist
+  #   test_script:
+  #       - dir dist
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.6
-          PYTHON_ARCH: 32
-    install:
-        - python setup.py bdist_wheel --python-tag cp36 --plat-name win32
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.6
+  #         PYTHON_ARCH: 32
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp36 --plat-name win32
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.7
-          PYTHON_ARCH: 32
-    install:
-        - python setup.py bdist_wheel --python-tag cp37 --plat-name win32
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.7
+  #         PYTHON_ARCH: 32
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp37 --plat-name win32
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.8
-          PYTHON_ARCH: 32
-    install:
-        - python setup.py bdist_wheel --python-tag cp38 --plat-name win32
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.8
+  #         PYTHON_ARCH: 32
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp38 --plat-name win32
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.9
-          PYTHON_ARCH: 32
-    install:
-        - python setup.py bdist_wheel --python-tag cp39 --plat-name win32
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.9
+  #         PYTHON_ARCH: 32
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp39 --plat-name win32
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.6
-          PYTHON_ARCH: 64
-    install:
-        - python setup.py bdist_wheel --python-tag cp36 --plat-name win_amd64
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.6
+  #         PYTHON_ARCH: 64
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp36 --plat-name win_amd64
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.7
-          PYTHON_ARCH: 64
-    install:
-        - python setup.py bdist_wheel --python-tag cp37 --plat-name win_amd64
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.7
+  #         PYTHON_ARCH: 64
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp37 --plat-name win_amd64
 
   -
     matrix:
@@ -120,13 +120,13 @@ for:
     install:
         - python setup.py bdist_wheel --python-tag cp38 --plat-name win_amd64
 
-  -
-    matrix:
-      only:
-        - PYTHON_VERSION: 3.9
-          PYTHON_ARCH: 64
-    install:
-        - python setup.py bdist_wheel --python-tag cp39 --plat-name win_amd64
+  # -
+  #   matrix:
+  #     only:
+  #       - PYTHON_VERSION: 3.9
+  #         PYTHON_ARCH: 64
+  #   install:
+  #       - python setup.py bdist_wheel --python-tag cp39 --plat-name win_amd64
 
 
 # Not a project with an msbuild file, build done at install.

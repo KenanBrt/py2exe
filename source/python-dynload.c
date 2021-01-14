@@ -281,12 +281,11 @@ PyObject *PyUnicode_FromString(const char *u)
 }
 
 # if defined(Py_DEBUG) || PY_VERSION_HEX >= 0x030900b0
-static void (*py3__Py_Dealloc)(PyObject *obj);
+void (*py3__Py_Dealloc)(PyObject *obj);
 # endif
 
 # if PY_VERSION_HEX >= 0x030800f0
-    static inline void
-py3__Py_DECREF(const char *filename UNUSED, int lineno UNUSED, PyObject *op)
+void py3__Py_DECREF(const char *filename UNUSED, int lineno UNUSED, PyObject *op)
 {
     if (--op->ob_refcnt != 0)
     {
@@ -306,8 +305,7 @@ py3__Py_DECREF(const char *filename UNUSED, int lineno UNUSED, PyObject *op)
 #  undef Py_DECREF
 #  define Py_DECREF(op) py3__Py_DECREF(__FILE__, __LINE__, _PyObject_CAST(op))
 
-    static inline void
-py3__Py_XDECREF(PyObject *op)
+void py3__Py_XDECREF(PyObject *op)
 {
     if (op != NULL)
     {

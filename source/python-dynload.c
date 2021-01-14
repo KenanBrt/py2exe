@@ -284,14 +284,6 @@ PyObject *PyUnicode_FromString(const char *u)
 static void (*py3__Py_Dealloc)(PyObject *obj);
 # endif
 
-# if defined(Py_DEBUG) || PY_VERSION_HEX >= 0x030900b0
-void _Py_Dealloc(PyObject *ob)
-{
-  FUNC(void, _Py_Dealloc, (PyObject *));
-  proc(ob);
-}
-#endif
-
 # if PY_VERSION_HEX >= 0x030800f0
     static inline void
 py3__Py_DECREF(const char *filename UNUSED, int lineno UNUSED, PyObject *op)

@@ -40,6 +40,10 @@ static HMODULE hmod_pydll;
 
 ////////////////////////////////////////////////////////////////
 
+# if defined(Py_DEBUG) || PY_VERSION_HEX >= 0x030900b0
+#  define _Py_Dealloc py3__Py_Dealloc
+# endif
+
 int *_Py_OptimizeFlag_PTR()
 {
   DATA(int *, Py_OptimizeFlag);
@@ -276,45 +280,52 @@ PyObject *PyUnicode_FromString(const char *u)
   return proc(u);
 }
 
+# if defined(Py_DEBUG) || PY_VERSION_HEX >= 0x030900b0
+static void (*py3__Py_Dealloc)(PyObject *obj);
+# endif
 
-#if PY_VERSION_HEX >= 0x030800f0
-static inline void
-py3__Py_DECREF(const char *filename, int lineno, PyObject *op)
+# if defined(Py_DEBUG) || PY_VERSION_HEX >= 0x030900b0
+void _Py_Dealloc(PyObject *ob)
 {
-	(void)filename; /* may be unused, shut up -Wunused-parameter */
-	(void)lineno; /* may be unused, shut up -Wunused-parameter */
-	_Py_DEC_REFTOTAL;
-	if (--op->ob_refcnt != 0)
-	{
-#ifdef Py_REF_DEBUG
+  FUNC(void, _Py_Dealloc, (PyObject *));
+  proc(ob);
+}
+#endif
+
+# if PY_VERSION_HEX >= 0x030800f0
+    static inline void
+py3__Py_DECREF(const char *filename UNUSED, int lineno UNUSED, PyObject *op)
+{
+    if (--op->ob_refcnt != 0)
+    {
+#  ifdef Py_REF_DEBUG
 	if (op->ob_refcnt < 0)
 	{
-		_Py_NegativeRefcount(filename, lineno, op);
+	    _Py_NegativeRefcount(filename, lineno, op);
 	}
-#endif
-	}
-	else
-	{
-		_Py_Dealloc(op);
-	}
+#  endif
+    }
+    else
+    {
+	_Py_Dealloc(op);
+    }
 }
 
-#undef Py_DECREF
-#define Py_DECREF(op) py3__Py_DECREF(__FILE__, __LINE__, _PyObject_CAST(op))
+#  undef Py_DECREF
+#  define Py_DECREF(op) py3__Py_DECREF(__FILE__, __LINE__, _PyObject_CAST(op))
 
-static inline void
+    static inline void
 py3__Py_XDECREF(PyObject *op)
 {
-	if (op != NULL)
-	{
-		Py_DECREF(op);
-	}
+    if (op != NULL)
+    {
+	Py_DECREF(op);
+    }
 }
 
-#undef Py_XDECREF
-#define Py_XDECREF(op) py3__Py_XDECREF(_PyObject_CAST(op))
-#endif
-
+#  undef Py_XDECREF
+#  define Py_XDECREF(op) py3__Py_XDECREF(_PyObject_CAST(op))
+# endif
 
 char *PyBytes_AsString(PyObject *string)
 {

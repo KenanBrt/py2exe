@@ -284,7 +284,9 @@ void _Py_Dealloc(PyObject *op)
 #ifdef Py_TRACE_REFS
     _Py_ForgetReference(op);
 #else
+  #if (PY_VERSION_HEX < 0x03090000)
     _Py_INC_TPFREES(op);
+  #endif
 #endif
     (*dealloc)(op);
 }

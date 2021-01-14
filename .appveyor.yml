@@ -145,20 +145,20 @@ test_script:
   - python -c "import py2exe"
   - cd tests
   - python maketest.py
-  - cd functional
-  - runner bundlefiles_test
-  - runner numpy_test
-  - runner pandas_test
-  - runner pycryptodome_test
-  - runner tk_test
-  #- del "C:\Program Files\Amazon\AWSCLI\sqlite3.dll" /F
-  - runner sqlite_test
-  - runner certifi_test
-  - runner certifi_zip_test
-  - runner pywin32_test
-  - runner requests_test
-  - runner zope_interface_test
-  - runner ssl_test
+  # - cd functional
+  # - runner bundlefiles_test
+  # - runner numpy_test
+  # - runner pandas_test
+  # - runner pycryptodome_test
+  # - runner tk_test
+  # #- del "C:\Program Files\Amazon\AWSCLI\sqlite3.dll" /F
+  # - runner sqlite_test
+  # - runner certifi_test
+  # - runner certifi_zip_test
+  # - runner pywin32_test
+  # - runner requests_test
+  # - runner zope_interface_test
+  # - runner ssl_test
 
 artifacts:
   - path: 'dist/$(wheelname)'

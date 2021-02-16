@@ -645,8 +645,6 @@ def hook__ssl(finder, module):
     On Python 3.7 and above, _ssl.pyd requires additional dll's to load.
     Based on code by Sebastian Krause: https://github.com/anthony-tuininga/cx_Freeze/pull/470
     Apparently, even with the new DLL finder system, this hook is still needed on cp37-win32
-
-    On Python 3.7 an above, _ssl is incompatible with bundle_files=0.
     """
     if sys.version_info < (3, 7, 0):
         return
